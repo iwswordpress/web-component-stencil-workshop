@@ -1,3 +1,11 @@
-export function format(first: string, middle: string, last: string): string {
-  return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
+export function format(value: string): string {
+  return value.toUpperCase();
+}
+
+export function getRandom(): number {
+  return Math.floor(Math.random() * 100);
+}
+
+export function getTemp() {
+  return 42;
 }

@@ -1,5 +1,6 @@
 import { Component, h, State } from '@stencil/core';
-import { API_KEY } from '../../global/keys';
+// import { API_KEY } from '../../global/keys';
+import { getRandom, getTemp } from '../../utils/utils';
 
 @Component({
   tag: 'iws-get-data',
@@ -73,6 +74,9 @@ export class GetData {
         <h2>{this.name}</h2>
         <p>Population: {this.population}</p>
         <p>GNP: {this.gnp}</p>
+        <em>
+          {getRandom()} - {getTemp()}
+        </em>
       </div>,
     ];
   }
