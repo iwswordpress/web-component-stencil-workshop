@@ -21,6 +21,10 @@ form input {
 input::placeholder {
   font-style: italic;
 }
+input:disabled {
+  cursor: not-allowed;
+  border: 2px solid red;
+}
 form input:focus,
 form button:focus {
   outline: none;
@@ -37,7 +41,9 @@ form button {
   width: 150px;
   border-radius: 5px;
 }
-
+form button:disabled {
+  cursor: not-allowed;
+}
 form button:hover,
 form button:active {
   background: var(--color-primary-highlight, #12548a);
