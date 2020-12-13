@@ -1,0 +1,52 @@
+:host {
+  font-family: inherit;
+  font-size: 22px;
+  border: 2px solid var(--color-primary, #2196f3);
+  border-radius: 5px;
+  padding: 1rem;
+  display: block;
+  width: 100%;
+}
+
+form input {
+  font: inherit;
+  font-size: 22px;
+  color: var(--color-primary, #2196f3);
+  padding: 0.1rem 0.25rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid var(--color-primary, #2196f3);
+}
+input::placeholder {
+  font-style: italic;
+}
+form input:focus,
+form button:focus {
+  outline: none;
+}
+
+form button {
+  font: inherit;
+  font-size: 22px;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-primary, #2196f3);
+  background: var(--color-primary, #2196f3);
+  color: white;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+}
+
+form button:hover,
+form button:active {
+  background: var(--color-primary-highlight, #12548a);
+  border-color: var(--color-primary-highlight, #12548a);
+}
+
+form button:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  color: white;
+  cursor: not-allowed;
+}
