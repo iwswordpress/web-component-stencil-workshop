@@ -1,6 +1,6 @@
 import { Component, h, State } from '@stencil/core';
 // import { API_KEY } from '../../global/keys';
-import { getRandom, getTemp } from '../../utils/utils';
+import { getRandom, getTemp, data, getJSON, getConferences } from '../../utils/utils';
 
 @Component({
   tag: 'iws-get-data',
@@ -8,11 +8,13 @@ import { getRandom, getTemp } from '../../utils/utils';
   shadow: true,
 })
 export class GetData {
+  json: any;
   @State() countryData: string;
   @State() gnp: string;
   @State() population: string;
   @State() name: string;
   @State() code: string = '';
+  @State() pop: string = '';
 
   @State() value: string;
   @State() inputValid = false;
@@ -24,6 +26,7 @@ export class GetData {
     }
     // send data to our backend
     this.onFetchData(this.code);
+    this.handleData();
   }
 
   handleChange(event) {
@@ -38,6 +41,17 @@ export class GetData {
     }
   }
 
+  handleData() {
+    getJSON().then(movies => {
+      const data = movies; // fetched movies
+      console.log('RANDOM EMAIL: ', data.results[0].email);
+    });
+    getConferences().then(conf => {
+      // fetched movies
+      console.log('CONF:', conf[0].population);
+      this.pop = conf[0].population;
+    });
+  }
   onFetchData(code: string) {
     // console.log('API_KEY: ', API_KEY);
     // console.log('Get Data...');
@@ -74,9 +88,15 @@ export class GetData {
         <h2>{this.name}</h2>
         <p>Population: {this.population}</p>
         <p>GNP: {this.gnp}</p>
+        <p>
+          {data.first} {data.last}
+        </p>
         <em>
-          {getRandom()} - {getTemp()}
+          {getRandom()} - {getTemp()} - {this.pop}
         </em>
+      </div>,
+      <div>
+        <iws-events-finder></iws-events-finder>
       </div>,
     ];
   }

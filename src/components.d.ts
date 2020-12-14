@@ -6,10 +6,18 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface IwsEventsFinder {
+    }
     interface IwsGetData {
     }
 }
 declare global {
+    interface HTMLIwsEventsFinderElement extends Components.IwsEventsFinder, HTMLStencilElement {
+    }
+    var HTMLIwsEventsFinderElement: {
+        prototype: HTMLIwsEventsFinderElement;
+        new (): HTMLIwsEventsFinderElement;
+    };
     interface HTMLIwsGetDataElement extends Components.IwsGetData, HTMLStencilElement {
     }
     var HTMLIwsGetDataElement: {
@@ -17,13 +25,18 @@ declare global {
         new (): HTMLIwsGetDataElement;
     };
     interface HTMLElementTagNameMap {
+        "iws-events-finder": HTMLIwsEventsFinderElement;
         "iws-get-data": HTMLIwsGetDataElement;
     }
 }
 declare namespace LocalJSX {
+    interface IwsEventsFinder {
+        "onIwsConferenceSelected"?: (event: CustomEvent<string>) => void;
+    }
     interface IwsGetData {
     }
     interface IntrinsicElements {
+        "iws-events-finder": IwsEventsFinder;
         "iws-get-data": IwsGetData;
     }
 }
@@ -31,6 +44,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "iws-events-finder": LocalJSX.IwsEventsFinder & JSXBase.HTMLAttributes<HTMLIwsEventsFinderElement>;
             "iws-get-data": LocalJSX.IwsGetData & JSXBase.HTMLAttributes<HTMLIwsGetDataElement>;
         }
     }
