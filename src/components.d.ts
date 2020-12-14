@@ -13,12 +13,15 @@ export namespace Components {
     interface IwsEventsBooking {
     }
     interface IwsGetData {
+        "countryProp": string;
     }
     interface IwsGetLatestPosts {
     }
     interface IwsListConferences {
     }
     interface IwsPlaces {
+    }
+    interface MyComponent {
     }
     interface UcSpinner {
     }
@@ -66,6 +69,12 @@ declare global {
         prototype: HTMLIwsPlacesElement;
         new (): HTMLIwsPlacesElement;
     };
+    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    }
+    var HTMLMyComponentElement: {
+        prototype: HTMLMyComponentElement;
+        new (): HTMLMyComponentElement;
+    };
     interface HTMLUcSpinnerElement extends Components.UcSpinner, HTMLStencilElement {
     }
     var HTMLUcSpinnerElement: {
@@ -80,6 +89,7 @@ declare global {
         "iws-get-latest-posts": HTMLIwsGetLatestPostsElement;
         "iws-list-conferences": HTMLIwsListConferencesElement;
         "iws-places": HTMLIwsPlacesElement;
+        "my-component": HTMLMyComponentElement;
         "uc-spinner": HTMLUcSpinnerElement;
     }
 }
@@ -92,6 +102,7 @@ declare namespace LocalJSX {
     interface IwsEventsBooking {
     }
     interface IwsGetData {
+        "countryProp"?: string;
     }
     interface IwsGetLatestPosts {
         "onIwsPostSelected"?: (event: CustomEvent<string>) => void;
@@ -100,6 +111,8 @@ declare namespace LocalJSX {
         "onIwsConferenceSelected"?: (event: CustomEvent<string>) => void;
     }
     interface IwsPlaces {
+    }
+    interface MyComponent {
     }
     interface UcSpinner {
     }
@@ -111,6 +124,7 @@ declare namespace LocalJSX {
         "iws-get-latest-posts": IwsGetLatestPosts;
         "iws-list-conferences": IwsListConferences;
         "iws-places": IwsPlaces;
+        "my-component": MyComponent;
         "uc-spinner": UcSpinner;
     }
 }
@@ -125,6 +139,7 @@ declare module "@stencil/core" {
             "iws-get-latest-posts": LocalJSX.IwsGetLatestPosts & JSXBase.HTMLAttributes<HTMLIwsGetLatestPostsElement>;
             "iws-list-conferences": LocalJSX.IwsListConferences & JSXBase.HTMLAttributes<HTMLIwsListConferencesElement>;
             "iws-places": LocalJSX.IwsPlaces & JSXBase.HTMLAttributes<HTMLIwsPlacesElement>;
+            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "uc-spinner": LocalJSX.UcSpinner & JSXBase.HTMLAttributes<HTMLUcSpinnerElement>;
         }
     }

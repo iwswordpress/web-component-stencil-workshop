@@ -1,4 +1,4 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 // import { API_KEY } from '../../global/keys';
 import { getRandom, getTemp, data, getJSON, getConferences } from '../../utils/utils';
 
@@ -8,25 +8,25 @@ import { getRandom, getTemp, data, getJSON, getConferences } from '../../utils/u
   shadow: true,
 })
 export class GetData {
-  // json: any;
+  countryInput: HTMLInputElement;
+
   @State() countryData: string;
   @State() gnp: string;
   @State() population: string;
   @State() name: string;
   @State() code: string = '';
   @State() pop: string = '';
-
   @State() value: string;
   @State() inputValid = false;
 
-  handleSubmit(event: Event) {
-    event.preventDefault();
-    if (!this.inputValid) {
-      return;
+  @Prop() countryProp: string;
+
+  @Watch('countryProp')
+  countryChanged(newValue: string, oldValue: string) {
+    if (newValue !== oldValue) {
+      console.log('Value changed: ', oldValue, newValue);
+      this.value = newValue;
     }
-    // send data to our backend
-    this.onFetchData(this.code);
-    this.handleData();
   }
 
   handleChange(event) {
@@ -41,6 +41,16 @@ export class GetData {
     }
   }
 
+  handleSubmit(event: Event) {
+    event.preventDefault();
+    if (!this.inputValid) {
+      return;
+    }
+    // send data to our backend
+    this.onFetchData();
+    this.handleData();
+  }
+
   handleData() {
     getJSON().then(movies => {
       const data = movies; // fetched movies
@@ -51,11 +61,11 @@ export class GetData {
       console.log('CONF:', conf[0].population);
     });
   }
-  onFetchData(code: string) {
+  onFetchData() {
     // console.log('API_KEY: ', API_KEY);
     // console.log('Get Data...');
-
-    fetch(`https://wpjs.co.uk/enterprise/wp-json/enterprise/v2/get-country-data?code=${code}`)
+    const countrySymbol = this.countryInput.value;
+    fetch(`https://wpjs.co.uk/enterprise/wp-json/enterprise/v2/get-country-data?code=${countrySymbol}`)
       .then(res => {
         return res.json();
       })
@@ -69,13 +79,17 @@ export class GetData {
       .catch(err => console.log('Error has occured: ', err.message));
   }
 
+  componentDidLoad() {}
   render() {
     return [
+      <div>
+        <h3>PROP: {this.countryProp}</h3>
+      </div>,
       <div>
         <form onSubmit={e => this.handleSubmit(e)}>
           <label>
             Name:
-            <input type="text" value={this.value} onInput={event => this.handleChange(event)} />
+            <input type="text" value={this.value} onInput={event => this.handleChange(event)} ref={el => (this.countryInput = el)} />
           </label>
           <button type="submit" disabled={!this.inputValid}>
             {!this.inputValid ? 'Enter code' : 'GET DATA'}
