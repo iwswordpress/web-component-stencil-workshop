@@ -1,0 +1,9 @@
+:host {
+  font-family: sans-serif;
+  border: 4px solid orange;
+  padding: 1rem;
+  width: 100%;
+  display: block;
+  max-width: 100%;
+  margin-bottom: 5px;
+}

@@ -8,7 +8,7 @@ import { getRandom, getTemp, data, getJSON, getConferences } from '../../utils/u
   shadow: true,
 })
 export class GetData {
-  json: any;
+  // json: any;
   @State() countryData: string;
   @State() gnp: string;
   @State() population: string;
@@ -49,7 +49,6 @@ export class GetData {
     getConferences().then(conf => {
       // fetched movies
       console.log('CONF:', conf[0].population);
-      this.pop = conf[0].population;
     });
   }
   onFetchData(code: string) {
@@ -84,19 +83,20 @@ export class GetData {
         </form>
       </div>,
       <div>
-        <h3>Country Code: {this.code}</h3>
-        <h2>{this.name}</h2>
+        <h3>
+          Country Code: {this.code} {this.name}
+        </h3>
+
         <p>Population: {this.population}</p>
         <p>GNP: {this.gnp}</p>
         <p>
-          {data.first} {data.last}
+          Util: data {data.first} {data.last}
         </p>
-        <em>
-          {getRandom()} - {getTemp()} - {this.pop}
-        </em>
+        <p>Util: getRandom() {getRandom()}</p>
+        <p>Util: getTemp() {getTemp()}</p>
       </div>,
       <div>
-        <iws-list-conferences></iws-list-conferences>
+        <iws-get-latest-posts></iws-get-latest-posts>
       </div>,
     ];
   }
