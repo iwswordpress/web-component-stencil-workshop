@@ -6,46 +6,73 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface IwsEventsFinder {
-    }
     interface IwsGetData {
+    }
+    interface IwsGetLatestPosts {
+    }
+    interface IwsListConferences {
+    }
+    interface UcSpinner {
     }
 }
 declare global {
-    interface HTMLIwsEventsFinderElement extends Components.IwsEventsFinder, HTMLStencilElement {
-    }
-    var HTMLIwsEventsFinderElement: {
-        prototype: HTMLIwsEventsFinderElement;
-        new (): HTMLIwsEventsFinderElement;
-    };
     interface HTMLIwsGetDataElement extends Components.IwsGetData, HTMLStencilElement {
     }
     var HTMLIwsGetDataElement: {
         prototype: HTMLIwsGetDataElement;
         new (): HTMLIwsGetDataElement;
     };
+    interface HTMLIwsGetLatestPostsElement extends Components.IwsGetLatestPosts, HTMLStencilElement {
+    }
+    var HTMLIwsGetLatestPostsElement: {
+        prototype: HTMLIwsGetLatestPostsElement;
+        new (): HTMLIwsGetLatestPostsElement;
+    };
+    interface HTMLIwsListConferencesElement extends Components.IwsListConferences, HTMLStencilElement {
+    }
+    var HTMLIwsListConferencesElement: {
+        prototype: HTMLIwsListConferencesElement;
+        new (): HTMLIwsListConferencesElement;
+    };
+    interface HTMLUcSpinnerElement extends Components.UcSpinner, HTMLStencilElement {
+    }
+    var HTMLUcSpinnerElement: {
+        prototype: HTMLUcSpinnerElement;
+        new (): HTMLUcSpinnerElement;
+    };
     interface HTMLElementTagNameMap {
-        "iws-events-finder": HTMLIwsEventsFinderElement;
         "iws-get-data": HTMLIwsGetDataElement;
+        "iws-get-latest-posts": HTMLIwsGetLatestPostsElement;
+        "iws-list-conferences": HTMLIwsListConferencesElement;
+        "uc-spinner": HTMLUcSpinnerElement;
     }
 }
 declare namespace LocalJSX {
-    interface IwsEventsFinder {
-        "onIwsConferenceSelected"?: (event: CustomEvent<string>) => void;
-    }
     interface IwsGetData {
     }
+    interface IwsGetLatestPosts {
+        "onIwsPostSelected"?: (event: CustomEvent<string>) => void;
+    }
+    interface IwsListConferences {
+        "onIwsConferenceSelected"?: (event: CustomEvent<string>) => void;
+    }
+    interface UcSpinner {
+    }
     interface IntrinsicElements {
-        "iws-events-finder": IwsEventsFinder;
         "iws-get-data": IwsGetData;
+        "iws-get-latest-posts": IwsGetLatestPosts;
+        "iws-list-conferences": IwsListConferences;
+        "uc-spinner": UcSpinner;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "iws-events-finder": LocalJSX.IwsEventsFinder & JSXBase.HTMLAttributes<HTMLIwsEventsFinderElement>;
             "iws-get-data": LocalJSX.IwsGetData & JSXBase.HTMLAttributes<HTMLIwsGetDataElement>;
+            "iws-get-latest-posts": LocalJSX.IwsGetLatestPosts & JSXBase.HTMLAttributes<HTMLIwsGetLatestPostsElement>;
+            "iws-list-conferences": LocalJSX.IwsListConferences & JSXBase.HTMLAttributes<HTMLIwsListConferencesElement>;
+            "uc-spinner": LocalJSX.UcSpinner & JSXBase.HTMLAttributes<HTMLUcSpinnerElement>;
         }
     }
 }

@@ -96,7 +96,7 @@ export class GetData {
         </em>
       </div>,
       <div>
-        <iws-events-finder></iws-events-finder>
+        <iws-list-conferences></iws-list-conferences>
       </div>,
     ];
   }
