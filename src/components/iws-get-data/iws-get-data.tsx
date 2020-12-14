@@ -18,6 +18,7 @@ export class GetData {
   @State() pop: string = '';
   @State() value: string;
   @State() inputValid = false;
+  @State() randomEmail = '';
 
   @Prop() countryProp: string;
 
@@ -35,11 +36,11 @@ export class GetData {
     this.value = event.target.value;
     this.code = this.value;
     if (this.code.trim().length > 0) {
-      console.log('NOT EMPTY');
+      // console.log('NOT EMPTY');
       this.inputValid = true;
     } else {
       console.log('EMPTY');
-      this.inputValid = false;
+      //this.inputValid = false;
     }
   }
 
@@ -57,6 +58,7 @@ export class GetData {
     getJSON().then(movies => {
       const data = movies; // fetched movies
       console.log('RANDOM EMAIL: ', data.results[0].email);
+      this.randomEmail = data.results[0].email;
     });
     getConferences().then(conf => {
       // fetched movies
@@ -101,6 +103,7 @@ export class GetData {
       console.log('loaded', this.value);
       this.inputValid = true;
       this.fetchDataOnProp(this.countryProp);
+      this.handleData();
     }
   }
   render() {
@@ -127,10 +130,13 @@ export class GetData {
         <p>Population: {this.population}</p>
         <p>GNP: {this.gnp}</p>
         <p>
-          Util: data {data.first} {data.last}
+          RandomUser fetch email: <em>{this.randomEmail}</em>
         </p>
-        <p>Util: getRandom() {getRandom()}</p>
-        <p>Util: getTemp() {getTemp()}</p>
+        <p>
+          Util: imported data {data.first} {data.last}
+        </p>
+        <p>Util: imported function getRandom() {getRandom()}</p>
+        <p>Util: imported function getTemp() {getTemp()}</p>
       </div>,
       <div>
         <iws-get-latest-posts></iws-get-latest-posts>
