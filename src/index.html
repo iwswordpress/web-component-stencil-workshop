@@ -19,5 +19,17 @@
     <div style="display: flex; width: 700px; max-width: 1400px; margin: 0 auto">
       <iws-get-data country-prop="USA"></iws-get-data>
     </div>
+
+    <script>
+      setTimeout(function () {
+        document.querySelector('iws-get-data').setAttribute('country-prop', 'GBR');
+      }, 2000);
+      setTimeout(function () {
+        document.querySelector('iws-get-data').setAttribute('country-prop', 'FRA');
+      }, 4000);
+      setTimeout(function () {
+        document.querySelector('iws-get-data').setAttribute('country-prop', 'SWE');
+      }, 6000);
+    </script>
   </body>
 </html>
