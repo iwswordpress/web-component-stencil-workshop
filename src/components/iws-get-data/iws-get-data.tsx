@@ -40,7 +40,7 @@ export class GetData {
       this.inputValid = true;
     } else {
       console.log('EMPTY');
-      //this.inputValid = false;
+      this.inputValid = false;
     }
   }
 
