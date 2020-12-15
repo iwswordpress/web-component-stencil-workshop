@@ -1,11 +1,13 @@
+// required Stencil components
 import { Component, h, Prop, State, Watch } from '@stencil/core';
-// import { API_KEY } from '../../global/keys';
+// custom imports
 import { getRandom, getTemp, data, getJSON, getConferences } from '../../utils/utils';
+// import { API_KEY } from '../../global/keys';
 
 @Component({
   tag: 'iws-get-data',
-  styleUrl: 'iws-get-data.css',
-  shadow: true,
+  styleUrl: 'iws-get-data.scss', // usually css by default
+  shadow: true, // optional but best to encapsulate
 })
 export class GetData {
   countryInput: HTMLInputElement;
@@ -20,7 +22,9 @@ export class GetData {
   @State() inputValid = false;
   @State() randomEmail = '';
 
-  @Prop() countryProp: string;
+  // immutable by default from inside
+  // reflect set HTML attribute if changed in browser or inside
+  @Prop({ mutable: true, reflect: true }) countryProp: string;
 
   @Watch('countryProp')
   countryChanged(newValue: string, oldValue: string) {
@@ -49,22 +53,27 @@ export class GetData {
     if (!this.inputValid) {
       return;
     }
-    // send data to our backend
+    // we can send data to our backend
     this.onFetchData();
     this.handleData();
   }
 
+  // to demo the use of imported functions for code modularity
   handleData() {
+    // gets random email from randomuser.me api
     getJSON().then(movies => {
       const data = movies; // fetched movies
       console.log('RANDOM EMAIL: ', data.results[0].email);
       this.randomEmail = data.results[0].email;
     });
+    // get data from own custom api
     getConferences().then(conf => {
       // fetched movies
       console.log('CONF:', conf[0].population);
     });
   }
+
+  // these two fetch functions can be refactored toi be DRY
   fetchDataOnProp(countryProp) {
     fetch(`https://wpjs.co.uk/enterprise/wp-json/enterprise/v2/get-country-data?code=${countryProp}`)
       .then(res => {
@@ -96,6 +105,7 @@ export class GetData {
       })
       .catch(err => console.log('Error has occured: ', err.message));
   }
+
   // initial load
   componentDidLoad() {
     if (this.countryProp) {
@@ -104,10 +114,13 @@ export class GetData {
       this.inputValid = true;
       this.fetchDataOnProp(this.countryProp);
       this.handleData();
+      // to show how attribute can be set from within
+      // this.countryProp = 'ABW';
     }
   }
   render() {
     return [
+      // array as there is no root element
       <div>
         <h3>PROP: {this.countryProp}</h3>
       </div>,
@@ -139,6 +152,7 @@ export class GetData {
         <p>Util: imported function getTemp() {getTemp()}</p>
       </div>,
       <div>
+        {/* We can add components within components without the need to import at top. */}
         <iws-get-latest-posts></iws-get-latest-posts>
       </div>,
     ];
