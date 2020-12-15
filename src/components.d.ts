@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface FormEntry {
+    }
     interface IwsEventFlights {
     }
     interface IwsEventListener {
@@ -21,12 +23,16 @@ export namespace Components {
     }
     interface IwsPlaces {
     }
-    interface MyComponent {
-    }
     interface UcSpinner {
     }
 }
 declare global {
+    interface HTMLFormEntryElement extends Components.FormEntry, HTMLStencilElement {
+    }
+    var HTMLFormEntryElement: {
+        prototype: HTMLFormEntryElement;
+        new (): HTMLFormEntryElement;
+    };
     interface HTMLIwsEventFlightsElement extends Components.IwsEventFlights, HTMLStencilElement {
     }
     var HTMLIwsEventFlightsElement: {
@@ -69,12 +75,6 @@ declare global {
         prototype: HTMLIwsPlacesElement;
         new (): HTMLIwsPlacesElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLUcSpinnerElement extends Components.UcSpinner, HTMLStencilElement {
     }
     var HTMLUcSpinnerElement: {
@@ -82,6 +82,7 @@ declare global {
         new (): HTMLUcSpinnerElement;
     };
     interface HTMLElementTagNameMap {
+        "form-entry": HTMLFormEntryElement;
         "iws-event-flights": HTMLIwsEventFlightsElement;
         "iws-event-listener": HTMLIwsEventListenerElement;
         "iws-events-booking": HTMLIwsEventsBookingElement;
@@ -89,11 +90,12 @@ declare global {
         "iws-get-latest-posts": HTMLIwsGetLatestPostsElement;
         "iws-list-conferences": HTMLIwsListConferencesElement;
         "iws-places": HTMLIwsPlacesElement;
-        "my-component": HTMLMyComponentElement;
         "uc-spinner": HTMLUcSpinnerElement;
     }
 }
 declare namespace LocalJSX {
+    interface FormEntry {
+    }
     interface IwsEventFlights {
         "onIwsFlightSelected"?: (event: CustomEvent<string>) => void;
     }
@@ -112,11 +114,10 @@ declare namespace LocalJSX {
     }
     interface IwsPlaces {
     }
-    interface MyComponent {
-    }
     interface UcSpinner {
     }
     interface IntrinsicElements {
+        "form-entry": FormEntry;
         "iws-event-flights": IwsEventFlights;
         "iws-event-listener": IwsEventListener;
         "iws-events-booking": IwsEventsBooking;
@@ -124,7 +125,6 @@ declare namespace LocalJSX {
         "iws-get-latest-posts": IwsGetLatestPosts;
         "iws-list-conferences": IwsListConferences;
         "iws-places": IwsPlaces;
-        "my-component": MyComponent;
         "uc-spinner": UcSpinner;
     }
 }
@@ -132,6 +132,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "form-entry": LocalJSX.FormEntry & JSXBase.HTMLAttributes<HTMLFormEntryElement>;
             "iws-event-flights": LocalJSX.IwsEventFlights & JSXBase.HTMLAttributes<HTMLIwsEventFlightsElement>;
             "iws-event-listener": LocalJSX.IwsEventListener & JSXBase.HTMLAttributes<HTMLIwsEventListenerElement>;
             "iws-events-booking": LocalJSX.IwsEventsBooking & JSXBase.HTMLAttributes<HTMLIwsEventsBookingElement>;
@@ -139,7 +140,6 @@ declare module "@stencil/core" {
             "iws-get-latest-posts": LocalJSX.IwsGetLatestPosts & JSXBase.HTMLAttributes<HTMLIwsGetLatestPostsElement>;
             "iws-list-conferences": LocalJSX.IwsListConferences & JSXBase.HTMLAttributes<HTMLIwsListConferencesElement>;
             "iws-places": LocalJSX.IwsPlaces & JSXBase.HTMLAttributes<HTMLIwsPlacesElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "uc-spinner": LocalJSX.UcSpinner & JSXBase.HTMLAttributes<HTMLUcSpinnerElement>;
         }
     }
