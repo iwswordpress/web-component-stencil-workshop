@@ -1,9 +1,9 @@
 import { Component, State, h } from '@stencil/core';
 @Component({
-  tag: 'my-component',
-  styleUrl: 'my-component.css',
+  tag: 'form-entry',
+  styleUrl: 'form-entry.css',
 })
-export class MyName {
+export class FormEntry {
   selectedReceiverIds = [102, 103];
   @State() inputValue: string;
   @State() radioValue: string = 'none';

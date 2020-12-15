@@ -153,6 +153,7 @@ export class GetData {
       </div>,
       <div>
         {/* We can add components within components without the need to import at top. */}
+        <form-entry></form-entry>
         <iws-get-latest-posts></iws-get-latest-posts>
       </div>,
     ];
