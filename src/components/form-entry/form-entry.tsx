@@ -4,6 +4,7 @@ import { Component, State, h } from '@stencil/core';
   styleUrl: 'form-entry.css',
 })
 export class FormEntry {
+  cbo: HTMLInputElement;
   selectedReceiverIds = [102, 103];
   @State() inputValue: string = 'test@example.com';
   @State() radioValue: string = 'none';
@@ -17,7 +18,7 @@ export class FormEntry {
   @State() submittedData: string = '';
   handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
+    //console.log(e);
     console.log('Email:', this.inputValue, 'Car:', this.selectValue, 'Name:', this.secondSelectValue, 'Radio:', this.radioValue, 'Checkbox:', this.checkboxValue);
 
     this.submittedData = this.inputValue + ' ' + this.selectValue + ' ' + this.secondSelectValue + ' ' + this.radioValue + ' ' + this.checkboxValue;
@@ -46,9 +47,12 @@ export class FormEntry {
     console.log(event.target.value);
   }
 
-  handleCheckbox(event) {
-    if (event.target.value) {
+  handleCheckbox() {
+    console.log(this.cbo.checked);
+    if (this.cbo.checked) {
       this.checkboxValue = 'HAS_BIKE';
+    } else {
+      this.checkboxValue = 'NO_BIKE';
     }
   }
   render() {
@@ -88,7 +92,7 @@ export class FormEntry {
           </div>
           <p>Please tick</p>
           <div class="checkbox">
-            <input type="checkbox" id="cb1" name="cb1" onInput={event => this.handleCheckbox(event)} value="YES" />
+            <input type="checkbox" id="cb1" name="cb1" onInput={event => this.handleCheckbox()} ref={el => (this.cbo = el as HTMLInputElement)} />
             <label htmlFor="cb1"> I have a bike</label>
           </div>
 
