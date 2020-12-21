@@ -23,6 +23,11 @@ export namespace Components {
     }
     interface IwsPlaces {
     }
+    interface UcSideDrawer {
+        "open": () => Promise<void>;
+        "opened": boolean;
+        "title": string;
+    }
     interface UcSpinner {
     }
 }
@@ -75,6 +80,12 @@ declare global {
         prototype: HTMLIwsPlacesElement;
         new (): HTMLIwsPlacesElement;
     };
+    interface HTMLUcSideDrawerElement extends Components.UcSideDrawer, HTMLStencilElement {
+    }
+    var HTMLUcSideDrawerElement: {
+        prototype: HTMLUcSideDrawerElement;
+        new (): HTMLUcSideDrawerElement;
+    };
     interface HTMLUcSpinnerElement extends Components.UcSpinner, HTMLStencilElement {
     }
     var HTMLUcSpinnerElement: {
@@ -90,6 +101,7 @@ declare global {
         "iws-get-latest-posts": HTMLIwsGetLatestPostsElement;
         "iws-list-conferences": HTMLIwsListConferencesElement;
         "iws-places": HTMLIwsPlacesElement;
+        "uc-side-drawer": HTMLUcSideDrawerElement;
         "uc-spinner": HTMLUcSpinnerElement;
     }
 }
@@ -114,6 +126,10 @@ declare namespace LocalJSX {
     }
     interface IwsPlaces {
     }
+    interface UcSideDrawer {
+        "opened"?: boolean;
+        "title"?: string;
+    }
     interface UcSpinner {
     }
     interface IntrinsicElements {
@@ -125,6 +141,7 @@ declare namespace LocalJSX {
         "iws-get-latest-posts": IwsGetLatestPosts;
         "iws-list-conferences": IwsListConferences;
         "iws-places": IwsPlaces;
+        "uc-side-drawer": UcSideDrawer;
         "uc-spinner": UcSpinner;
     }
 }
@@ -140,6 +157,7 @@ declare module "@stencil/core" {
             "iws-get-latest-posts": LocalJSX.IwsGetLatestPosts & JSXBase.HTMLAttributes<HTMLIwsGetLatestPostsElement>;
             "iws-list-conferences": LocalJSX.IwsListConferences & JSXBase.HTMLAttributes<HTMLIwsListConferencesElement>;
             "iws-places": LocalJSX.IwsPlaces & JSXBase.HTMLAttributes<HTMLIwsPlacesElement>;
+            "uc-side-drawer": LocalJSX.UcSideDrawer & JSXBase.HTMLAttributes<HTMLUcSideDrawerElement>;
             "uc-spinner": LocalJSX.UcSpinner & JSXBase.HTMLAttributes<HTMLUcSpinnerElement>;
         }
     }

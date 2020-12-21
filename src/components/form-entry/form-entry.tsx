@@ -2,10 +2,14 @@ import { Component, State, h } from '@stencil/core';
 @Component({
   tag: 'form-entry',
   styleUrl: 'form-entry.css',
+  shadow: true,
 })
 export class FormEntry {
+  // to reference a DOM element - checkbox
   cbo: HTMLInputElement;
+
   selectedReceiverIds = [102, 103];
+
   @State() inputValue: string = 'test@example.com';
   @State() radioValue: string = 'none';
   @State() checkboxValue: string = 'NO_BIKE';
@@ -16,6 +20,7 @@ export class FormEntry {
     { id: 102, name: 'Smith' },
   ];
   @State() submittedData: string = '';
+
   handleSubmit(e) {
     e.preventDefault();
     //console.log(e);
@@ -62,7 +67,7 @@ export class FormEntry {
           <div>
             <label>
               Email:
-              <input name="email" type="email" value={this.inputValue} onInput={e => this.handleChange(e)} />
+              <input name="email" type="email" value={this.inputValue} onInput={event => this.handleChange(event)} />
             </label>
           </div>
           <div>
@@ -92,7 +97,8 @@ export class FormEntry {
           </div>
           <p>Please tick</p>
           <div class="checkbox">
-            <input type="checkbox" id="cb1" name="cb1" onInput={event => this.handleCheckbox()} ref={el => (this.cbo = el as HTMLInputElement)} />
+            <input type="checkbox" id="cb1" name="cb1" onInput={() => this.handleCheckbox()} ref={el => (this.cbo = el as HTMLInputElement)} />
+            {/* as HTMLInputElement optional */}
             <label htmlFor="cb1"> I have a bike</label>
           </div>
 
@@ -107,7 +113,18 @@ export class FormEntry {
             <input type="submit" value="Submit" />
           </div>
         </form>
-        {this.submittedData}
+        {/* {this.submittedData}
+        <br></br> */}
+        {this.inputValue}
+        <br></br>
+        {this.selectValue}
+        <br></br>
+        {this.secondSelectValue}
+        <br></br>
+        {this.checkboxValue}
+        <br></br>
+        {this.radioValue}
+        <br></br>
       </div>
     );
   }
