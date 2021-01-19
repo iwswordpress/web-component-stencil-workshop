@@ -4,9 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>iws-get-data</title>
-
+    <!-- JS Files -->
     <script type="module" src="/build/stock.esm.js"></script>
     <script nomodule src="/build/stock.js"></script>
+
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
     <style>
@@ -16,53 +17,17 @@
     </style>
   </head>
   <body>
-    <button id="side-drawer-btn">Open Side Menu</button>
-    <uc-side-drawer title="Main Menu">
-      <nav class="side-nav">
-        <ul>
-          <li><a href="/">A Link</a></li>
-          <li><a href="/">Another Link</a></li>
-          <li><a href="/">A third Link</a></li>
-        </ul>
-      </nav>
-    </uc-side-drawer>
     <div style="display: flex; width: 1200px; max-width: 1400px; margin: 0 auto">
+      <!-- EVENT LOGGER COMPONENT -->
       <iws-event-listener></iws-event-listener>
     </div>
     <div style="display: flex; width: 1400px; max-width: 1400px; margin: 0 auto">
+      <!-- MICRO APPS -->
       <iws-list-conferences></iws-list-conferences>
       <iws-events-booking></iws-events-booking>
       <iws-event-flights></iws-event-flights>
       <iws-places></iws-places>
-      <iws-get-data country-prop="GBR"></iws-get-data>
+      <!-- MICRO APPS -->
     </div>
-
-    <script>
-      const sideDrawerButton = document.querySelector('#side-drawer-btn');
-      const sideDrawer = document.querySelector('uc-side-drawer');
-      sideDrawerButton.addEventListener('click', () => {
-        if (!sideDrawer.opened) {
-          console.log('Opening side drawer...');
-          // sideDrawer.open = true;
-          sideDrawer.open();
-        }
-      });
-      setTimeout(() => {
-        // sideDrawer.title = 'It changed!';
-        // sideDrawer.setAttribute('title', 'It changed via Attribute');
-      }, 3000);
-    </script>
-    <uc-side-drawer></uc-side-drawer>
-    <script>
-      setTimeout(function () {
-        document.querySelector('iws-get-data').setAttribute('country-prop', 'GBR');
-      }, 2000);
-      setTimeout(function () {
-        document.querySelector('iws-get-data').setAttribute('country-prop', 'FRA');
-      }, 4000);
-      setTimeout(function () {
-        document.querySelector('iws-get-data').setAttribute('country-prop', 'AUS');
-      }, 6000);
-    </script>
   </body>
 </html>
