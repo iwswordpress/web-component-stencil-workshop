@@ -16,18 +16,6 @@
     </style>
   </head>
   <body>
-    <!-- START SIDE DRAWER -->
-    <!-- <button id="side-drawer-btn">Open Side Menu</button>
-    <uc-side-drawer title="Main Menu">
-      <nav class="side-nav">
-        <ul>
-          <li><a href="/">A Link</a></li>
-          <li><a href="/">Another Link</a></li>
-          <li><a href="/">A third Link</a></li>
-        </ul>
-      </nav>
-    </uc-side-drawer> -->
-    <!-- END SIDE DRAWER -->
     <div style="display: flex; width: 1200px; max-width: 1400px; margin: 0 auto">
       <iws-event-listener></iws-event-listener>
     </div>
@@ -36,25 +24,9 @@
       <iws-events-booking></iws-events-booking>
       <iws-event-flights></iws-event-flights>
       <iws-places></iws-places>
-      <!-- <iws-get-data country-prop="GBR"></iws-get-data> -->
+      <iws-get-data country-prop="GBR"></iws-get-data>
     </div>
 
-    <!-- <script>
-      const sideDrawerButton = document.querySelector('#side-drawer-btn');
-      const sideDrawer = document.querySelector('uc-side-drawer');
-      sideDrawerButton.addEventListener('click', () => {
-        if (!sideDrawer.opened) {
-          console.log('Opening side drawer...');
-          // sideDrawer.open = true;
-          sideDrawer.open();
-        }
-      });
-      setTimeout(() => {
-        // sideDrawer.title = 'It changed!';
-        // sideDrawer.setAttribute('title', 'It changed via Attribute');
-      }, 3000);
-    </script> -->
-    <!-- <uc-side-drawer></uc-side-drawer>
     <script>
       setTimeout(function () {
         document.querySelector('iws-get-data').setAttribute('country-prop', 'GBR');
@@ -65,6 +37,7 @@
       setTimeout(function () {
         document.querySelector('iws-get-data').setAttribute('country-prop', 'AUS');
       }, 6000);
-    </script> -->
+    </script>
+    -->
   </body>
 </html>

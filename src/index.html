@@ -4,10 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>iws-get-data</title>
-    <!-- JS Files -->
+
     <script type="module" src="/build/stock.esm.js"></script>
     <script nomodule src="/build/stock.js"></script>
-
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
     <style>
@@ -18,16 +17,27 @@
   </head>
   <body>
     <div style="display: flex; width: 1200px; max-width: 1400px; margin: 0 auto">
-      <!-- EVENT LOGGER COMPONENT -->
       <iws-event-listener></iws-event-listener>
     </div>
     <div style="display: flex; width: 1400px; max-width: 1400px; margin: 0 auto">
-      <!-- MICRO APPS -->
       <iws-list-conferences></iws-list-conferences>
       <iws-events-booking></iws-events-booking>
       <iws-event-flights></iws-event-flights>
       <iws-places></iws-places>
-      <!-- MICRO APPS -->
+      <iws-get-data country-prop="GBR"></iws-get-data>
     </div>
+
+    <script>
+      setTimeout(function () {
+        document.querySelector('iws-get-data').setAttribute('country-prop', 'GBR');
+      }, 2000);
+      setTimeout(function () {
+        document.querySelector('iws-get-data').setAttribute('country-prop', 'FRA');
+      }, 4000);
+      setTimeout(function () {
+        document.querySelector('iws-get-data').setAttribute('country-prop', 'AUS');
+      }, 6000);
+    </script>
+    -->
   </body>
 </html>

@@ -7,12 +7,26 @@
 
 ## Properties
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+| Property      | Attribute      | Description | Type     | Default     |
+| ------------- | -------------- | ----------- | -------- | ----------- |
+| `countryProp` | `country-prop` |             | `string` | `undefined` |
 
+
+## Dependencies
+
+### Depends on
+
+- [form-entry](../form-entry)
+- [iws-get-latest-posts](../iws-get-latest-posts)
+
+### Graph
+```mermaid
+graph TD;
+  iws-get-data --> form-entry
+  iws-get-data --> iws-get-latest-posts
+  iws-get-latest-posts --> uc-spinner
+  style iws-get-data fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
